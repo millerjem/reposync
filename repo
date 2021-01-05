@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+
+use strict;
+
+my $ip = "127.0.0.1";
+my $contents = $ENV{'QUERY_STRING'};
+my @values = split(/&/,$ENV{QUERY_STRING});
+
+foreach my $i (@values) {
+    my($fieldname, $data) = split(/=/, $i);
+    if ($fieldname == "ip") {
+        $ip = $data;
+    }
+}
+
+my @repos = ("base", "extras", "updates", "konvoy-packages", "kubernetes", "libnvidia-container","nvidia-container-runtime");
+
+print "Content-type: text/plain\n\n";
+
+foreach my $repo (@repos) {
+    print "[local-$repo]\n";
+    print "name = Custom $repo\n";
+    print "baseurl = http://$ip/$repo/\n";
+    print "enabled = 1\n";
+    print "gpgcheck = 0\n\n";
+}

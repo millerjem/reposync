@@ -1,0 +1,14 @@
+[konvoy-packages]
+name = Konvoy Containerd package repository
+baseurl = https://packages.d2iq.com/konvoy/stable/linux/centos/$releasever/$basearch
+enabled = 1
+gpgcheck = 0
+gpgkey = https://packages.d2iq.com/konvoy/stable/linux/centos/$release/$basearch/gpg.asc 
+
+[kubernetes]
+name = Konvoy Kubernetes package repository
+baseurl = https://packages.d2iq.com/konvoy/rpm/stable/centos/$releasever/$basearch
+enabled = 1
+gpgcheck = 0
+gpgkey = https://packages.d2iq.com/konvoy/rpm-gpg-pub-key
+
